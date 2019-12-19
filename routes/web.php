@@ -18,10 +18,10 @@ Auth::routes();
 
 
 //Route::resource('index', 'ItemsController'); 
-Route::get('/index', 'ItemsController@index'); 
+Route::get('index', 'ItemsController@index'); 
 
-Route::get('/bill', 'ItemsController@store'); 
-Route::get('/reports', 'LaravelGoogleGraph@index');
-Route::get('/reportLinegraph', 'LineGraph@index');
-Route::get('/bargraphchart', 'BarGraph@index');
+Route::get('bill', 'ItemsController@store'); 
+Route::get('reports', 'PieChart@index');
+Route::get('reportLinegraph', 'LineGraph@index');
+Route::get('bargraphchart', 'BarGraph@index');
 

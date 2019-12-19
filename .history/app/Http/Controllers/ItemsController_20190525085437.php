@@ -118,3 +118,31 @@ class ItemsController extends Controller
     }
 }
 
+INSERT INTO `employee_discounts` (`id`, `users_id`, `discount`, `start_date`, `end_date`, `created_at`, `updated_at`) VALUES ('1', '2', '200', '2019-05-01', '2019-05-02', '2019-05-02 00:00:00', '2019-05-03 00:00:00');
+
+
+$validatedData = $request->validate([
+            'name' => 'required',
+            'discount' => 'required',
+            'start_date' => 'required',
+            'end_date' => 'required'
+        ]);
+        try{       
+            $data['users'] = DB::table('employee_discounts as ed')
+            ->join('users as u', 'u.id', 'ed.users_id')
+            ->select('u.name', 'ed.*')
+            ->where('ed.id', $request->discount_id)
+            ->first();
+            if($vec==1){    
+                $success['status'] = 200;
+                $success['message'] = 'Vehicle Details Updated Succesfully';
+                return response()->json(['success' => $success], 200);
+            }else{
+                $success['status'] = 500;
+                $success['message'] = 'Vehicle Details Failed to Update';
+                return response()->json(['success' => $success], 200);
+            }
+        }catch(\Exception $exc){
+            dd($exc);
+        }
+        return view('update_discount', $data);

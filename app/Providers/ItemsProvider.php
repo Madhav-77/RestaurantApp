@@ -10,8 +10,7 @@ class ItemsProvider extends ServiceProvider{
         
             $view = DB::select('SELECT * from item');
            
-       
         //$price = DB::table('item')->where('i_name', $view)->value('i_price');
        // $price = DB::select('select * from item where i_name = ');
-    }
+    } 
 }
